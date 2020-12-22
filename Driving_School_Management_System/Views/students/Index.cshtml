@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Driving_School_Management_System.Models.STUDENT>
+
+@{
+    ViewBag.Title = "Student Records";
+    //Layout = "~/Views/Shared/_Layout - Copy.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/media/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+
+
+<hr />
+<h2 class="text-uppercase text-center text-purple">Student Records </h2>
+<hr />
+<p>
+    <a href="/students/create" class="btn btn-primary"><span class="fas fa-plus mr-1"></span>Add New</a>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Addres)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telephone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DURATION.FULL_MONTH)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SHIFT.SHIFT_A)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a href="/students/edit/@item.ID" class="btn btn-sm btn-secondary"><span class="fas fa-edit mr-1"></span>Edit</a>
+
+                        <a href="/students/delete/@item.ID" class="btn btn-sm btn-danger"><span class="fas fa-trash mr-1"></span>Delete</a>
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Addres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telephone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DURATION.FULL_MONTH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SHIFT.SHIFT_A)
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>#</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Addres)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telephone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DURATION.FULL_MONTH)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SHIFT.SHIFT_A)
+                </th>
+
+            </tr>
+        </tfoot>
+    </table>
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/popper.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/DataTables/media/js/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/media/js/dataTables.bootstrap4.min.js"></script>
+
+
+<script>
+    $('.table').DataTable();
+ 
+</script>
