@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Driving_School_Management_System.Models.ATTENDENCE>
+
+@{
+    ViewBag.Title = "Attendence Record";
+}
+
+
+
+<link href="~/Content/bootstrap.min.css.map" rel="stylesheet" />
+<link href="~/Content/DataTables/media/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+
+<div class="container">
+    <hr />
+    <h2 class="text-uppercase text-center text-purple">Attendence Records </h2>
+    <hr />
+    <p>
+        <a href="/attendence/create" class="btn btn-primary"><span class="fas fa-plus mr-1"></span>Add New</a>
+    </p>
+
+
+    <table class="table table-hover">
+        <thead class="  text-purple">
+            <tr>
+                <th>#</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DATES)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TIME_IN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TIME_OUT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.STUDENT.FirstName)
+
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a href="/attendence/edit/@item.ID" class="btn btn-sm btn-success"><span class="fas fa-edit "></span></a>|
+
+                        <a href="/attendence/delete/@item.ID" class="btn btn-sm btn-danger"><span class="fas fa-trash-alt"></span></a>
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DATES)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TIME_IN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TIME_OUT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.STUDENT.FirstName)
+                    </td>
+                 
+
+                </tr>
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>#</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DATES)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TIME_IN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TIME_OUT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.STUDENT.FirstName)
+                 
+                </th>
+                
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/popper.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/DataTables/media/js/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/media/js/dataTables.bootstrap4.min.js"></script>
+
+
+<script>
+    $('.table').DataTable();
+
+</script>

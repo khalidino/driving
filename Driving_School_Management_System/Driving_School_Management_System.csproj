@@ -172,23 +172,58 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\attendenceController.cs" />
+    <Compile Include="Controllers\cardetailController.cs" />
+    <Compile Include="Controllers\contactController.cs" />
     <Compile Include="Controllers\dashboardController.cs" />
     <Compile Include="Controllers\durationController.cs" />
+    <Compile Include="Controllers\employeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\instructorController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\newsController.cs" />
+    <Compile Include="Controllers\orderController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\shiftsController.cs" />
     <Compile Include="Controllers\studentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ATTENDENCE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAR_DETAIL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CONTACT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DURATION.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\employee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\INSTRUCTOR.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -205,6 +240,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\NEWS.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ORDER.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SHIFT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -215,6 +256,111 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\img\about.jpg" />
+    <Content Include="assets\img\apple-touch-icon.png" />
+    <Content Include="assets\img\blog-1.jpg" />
+    <Content Include="assets\img\blog-2.jpg" />
+    <Content Include="assets\img\blog-3.jpg" />
+    <Content Include="assets\img\blog-4.jpg" />
+    <Content Include="assets\img\blog-5.jpg" />
+    <Content Include="assets\img\blog-6.jpg" />
+    <Content Include="assets\img\blog-author.jpg" />
+    <Content Include="assets\img\blog-inside-post.jpg" />
+    <Content Include="assets\img\blog-recent-1.jpg" />
+    <Content Include="assets\img\blog-recent-2.jpg" />
+    <Content Include="assets\img\blog-recent-3.jpg" />
+    <Content Include="assets\img\blog-recent-4.jpg" />
+    <Content Include="assets\img\blog-recent-5.jpg" />
+    <Content Include="assets\img\clients\client-1.png" />
+    <Content Include="assets\img\clients\client-2.png" />
+    <Content Include="assets\img\clients\client-3.png" />
+    <Content Include="assets\img\clients\client-4.png" />
+    <Content Include="assets\img\clients\client-5.png" />
+    <Content Include="assets\img\clients\client-6.png" />
+    <Content Include="assets\img\clients\client-7.png" />
+    <Content Include="assets\img\clients\client-8.png" />
+    <Content Include="assets\img\comments-1.jpg" />
+    <Content Include="assets\img\comments-2.jpg" />
+    <Content Include="assets\img\comments-3.jpg" />
+    <Content Include="assets\img\comments-4.jpg" />
+    <Content Include="assets\img\comments-5.jpg" />
+    <Content Include="assets\img\comments-6.jpg" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\features-1.jpg" />
+    <Content Include="assets\img\features-2.jpg" />
+    <Content Include="assets\img\features-3.jpg" />
+    <Content Include="assets\img\features-4.jpg" />
+    <Content Include="assets\img\hero-bg.jpg" />
+    <Content Include="assets\img\portfolio-details-1.jpg" />
+    <Content Include="assets\img\portfolio-details-2.jpg" />
+    <Content Include="assets\img\portfolio-details-3.jpg" />
+    <Content Include="assets\img\portfolio\portfolio-1.jpg" />
+    <Content Include="assets\img\portfolio\portfolio-2.jpg" />
+    <Content Include="assets\img\portfolio\portfolio-3.jpg" />
+    <Content Include="assets\img\portfolio\portfolio-4.jpg" />
+    <Content Include="assets\img\portfolio\portfolio-5.jpg" />
+    <Content Include="assets\img\portfolio\portfolio-6.jpg" />
+    <Content Include="assets\img\portfolio\portfolio-7.jpg" />
+    <Content Include="assets\img\portfolio\portfolio-8.jpg" />
+    <Content Include="assets\img\portfolio\portfolio-9.jpg" />
+    <Content Include="assets\img\skills-img.jpg" />
+    <Content Include="assets\img\team\team-1.jpg" />
+    <Content Include="assets\img\team\team-2.jpg" />
+    <Content Include="assets\img\team\team-3.jpg" />
+    <Content Include="assets\img\team\team-4.jpg" />
+    <Content Include="assets\img\team\team-5.jpg" />
+    <Content Include="assets\img\team\team-6.jpg" />
+    <Content Include="assets\img\work-process-1.png" />
+    <Content Include="assets\img\work-process-2.png" />
+    <Content Include="assets\img\work-process-3.png" />
+    <Content Include="assets\img\work-process-4.png" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\vendor\aos\aos.css" />
+    <Content Include="assets\vendor\aos\aos.js" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\vendor\boxicons\css\animations.css" />
+    <Content Include="assets\vendor\boxicons\css\boxicons.css" />
+    <Content Include="assets\vendor\boxicons\css\boxicons.min.css" />
+    <Content Include="assets\vendor\boxicons\css\transformations.css" />
+    <Content Include="assets\vendor\boxicons\fonts\boxicons.svg" />
+    <Content Include="assets\vendor\counterup\counterup.min.js" />
+    <Content Include="assets\vendor\icofont\icofont.min.css" />
+    <Content Include="assets\vendor\isotope-layout\isotope.pkgd.js" />
+    <Content Include="assets\vendor\isotope-layout\isotope.pkgd.min.js" />
+    <Content Include="assets\vendor\jquery.easing\jquery.easing.min.js" />
+    <Content Include="assets\vendor\jquery\jquery.min.js" />
+    <Content Include="assets\vendor\line-awesome\css\line-awesome.css" />
+    <Content Include="assets\vendor\line-awesome\css\line-awesome.min.css" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-brands-400.svg" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-regular-400.svg" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-solid-900.svg" />
+    <Content Include="assets\vendor\owl.carousel\assets\ajax-loader.gif" />
+    <Content Include="assets\vendor\owl.carousel\assets\owl.carousel.css" />
+    <Content Include="assets\vendor\owl.carousel\assets\owl.carousel.min.css" />
+    <Content Include="assets\vendor\owl.carousel\assets\owl.theme.default.css" />
+    <Content Include="assets\vendor\owl.carousel\assets\owl.theme.default.min.css" />
+    <Content Include="assets\vendor\owl.carousel\assets\owl.theme.green.css" />
+    <Content Include="assets\vendor\owl.carousel\assets\owl.theme.green.min.css" />
+    <Content Include="assets\vendor\owl.carousel\assets\owl.video.play.png" />
+    <Content Include="assets\vendor\owl.carousel\owl.carousel.js" />
+    <Content Include="assets\vendor\owl.carousel\owl.carousel.min.js" />
+    <Content Include="assets\vendor\php-email-form\changelog.txt" />
+    <Content Include="assets\vendor\php-email-form\validate.js" />
+    <Content Include="assets\vendor\venobox\venobox.css" />
+    <Content Include="assets\vendor\venobox\venobox.js" />
+    <Content Include="assets\vendor\venobox\venobox.min.css" />
+    <Content Include="assets\vendor\venobox\venobox.min.js" />
+    <Content Include="assets\vendor\waypoints\jquery.waypoints.min.js" />
     <Content Include="Content\AdminLTE\adminlte.css" />
     <Content Include="Content\AdminLTE\adminlte.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -383,6 +529,7 @@
     <Content Include="Content\Images\user3-128x128.jpg" />
     <Content Include="Content\Images\user8-128x128.jpg" />
     <Content Include="Content\LICENSE.txt" />
+    <Content Include="Content\loginStyle.css" />
     <Content Include="Content\regular.css" />
     <Content Include="Content\regular.min.css" />
     <Content Include="Content\solid.css" />
@@ -391,6 +538,7 @@
     <Content Include="Content\svg-with-js.min.css" />
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
+    <Content Include="Driving_school_management_script.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -428,13 +576,6 @@
     <Content Include="Scripts\AdminLTE\adminlte.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Plugins\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Plugins\fontawesome-free\webfonts\fa-solid-900.woff" />
     <Content Include="Plugins\fontawesome-free\webfonts\fa-solid-900.ttf" />
@@ -645,6 +786,44 @@
     <Content Include="Content\DataTables\extensions\Buttons\css\common.scss" />
     <Content Include="Content\DataTables\extensions\Buttons\css\mixins.scss" />
     <Content Include="Content\DataTables\media\images\Sorting icons.psd" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="assets\vendor\boxicons\fonts\boxicons.eot" />
+    <Content Include="assets\vendor\boxicons\fonts\boxicons.ttf" />
+    <Content Include="assets\vendor\boxicons\fonts\boxicons.woff" />
+    <Content Include="assets\vendor\boxicons\fonts\boxicons.woff2" />
+    <Content Include="assets\vendor\icofont\fonts\icofont.woff" />
+    <Content Include="assets\vendor\icofont\fonts\icofont.woff2" />
+    <Content Include="assets\vendor\jquery\jquery.min.map" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-brands-400.eot" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-brands-400.ttf" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-brands-400.woff" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-brands-400.woff2" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-regular-400.eot" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-regular-400.ttf" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-regular-400.woff" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-regular-400.woff2" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-solid-900.eot" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-solid-900.ttf" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-solid-900.woff" />
+    <Content Include="assets\vendor\line-awesome\fonts\la-solid-900.woff2" />
+    <Content Include="assets\vendor\owl.carousel\LICENSE" />
+    <Content Include="assets\vendor\owl.carousel\README.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -738,8 +917,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -761,22 +938,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\duration\Create.cshtml" />
-    <Content Include="Views\duration\Delete.cshtml" />
-    <Content Include="Views\duration\Details.cshtml" />
-    <Content Include="Views\duration\Edit.cshtml" />
-    <Content Include="Views\duration\Index.cshtml" />
-    <Content Include="Views\students\Create.cshtml" />
-    <Content Include="Views\students\Delete.cshtml" />
-    <Content Include="Views\students\Details.cshtml" />
-    <Content Include="Views\students\Edit.cshtml" />
-    <Content Include="Views\students\Index.cshtml" />
-    <Content Include="Views\shifts\Create.cshtml" />
-    <Content Include="Views\shifts\Delete.cshtml" />
-    <Content Include="Views\shifts\Details.cshtml" />
-    <Content Include="Views\shifts\Edit.cshtml" />
-    <Content Include="Views\shifts\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\Shared\FrontStyle.cshtml" />
     <Content Include="Views\Shared\_SideBar.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -805,6 +967,58 @@
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\dashboard\Index.cshtml" />
+    <Content Include="Views\attendence\Create.cshtml" />
+    <Content Include="Views\attendence\Delete.cshtml" />
+    <Content Include="Views\attendence\Details.cshtml" />
+    <Content Include="Views\attendence\Edit.cshtml" />
+    <Content Include="Views\attendence\Index.cshtml" />
+    <Content Include="Views\duration\Create.cshtml" />
+    <Content Include="Views\duration\Delete.cshtml" />
+    <Content Include="Views\duration\Details.cshtml" />
+    <Content Include="Views\duration\Edit.cshtml" />
+    <Content Include="Views\duration\Index.cshtml" />
+    <Content Include="Views\shifts\Create.cshtml" />
+    <Content Include="Views\shifts\Delete.cshtml" />
+    <Content Include="Views\shifts\Details.cshtml" />
+    <Content Include="Views\shifts\Edit.cshtml" />
+    <Content Include="Views\shifts\Index.cshtml" />
+    <Content Include="Views\students\Create.cshtml" />
+    <Content Include="Views\students\Delete.cshtml" />
+    <Content Include="Views\students\Details.cshtml" />
+    <Content Include="Views\students\Edit.cshtml" />
+    <Content Include="Views\students\Index.cshtml" />
+    <Content Include="Views\contact\Create.cshtml" />
+    <Content Include="Views\contact\Delete.cshtml" />
+    <Content Include="Views\contact\Details.cshtml" />
+    <Content Include="Views\contact\Edit.cshtml" />
+    <Content Include="Views\contact\Index.cshtml" />
+    <Content Include="Views\employee\Create.cshtml" />
+    <Content Include="Views\employee\Delete.cshtml" />
+    <Content Include="Views\employee\Details.cshtml" />
+    <Content Include="Views\employee\Edit.cshtml" />
+    <Content Include="Views\employee\Index.cshtml" />
+    <Content Include="Views\order\Create.cshtml" />
+    <Content Include="Views\order\Delete.cshtml" />
+    <Content Include="Views\order\Details.cshtml" />
+    <Content Include="Views\order\Edit.cshtml" />
+    <Content Include="Views\order\Index.cshtml" />
+    <Content Include="Views\instructor\Create.cshtml" />
+    <Content Include="Views\instructor\Delete.cshtml" />
+    <Content Include="Views\instructor\Details.cshtml" />
+    <Content Include="Views\instructor\Edit.cshtml" />
+    <Content Include="Views\instructor\Index.cshtml" />
+    <Content Include="Views\news\Create.cshtml" />
+    <Content Include="Views\news\Delete.cshtml" />
+    <Content Include="Views\news\Details.cshtml" />
+    <Content Include="Views\news\Edit.cshtml" />
+    <Content Include="Views\news\Index.cshtml" />
+    <Content Include="Views\cardetail\Create.cshtml" />
+    <Content Include="Views\cardetail\Delete.cshtml" />
+    <Content Include="Views\cardetail\Details.cshtml" />
+    <Content Include="Views\cardetail\Edit.cshtml" />
+    <Content Include="Views\cardetail\Index.cshtml" />
+    <Content Include="Views\Role\RoleList.cshtml" />
+    <Content Include="Views\Role\CreateRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

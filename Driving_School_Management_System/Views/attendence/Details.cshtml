@@ -1,0 +1,50 @@
+﻿@model Driving_School_Management_System.Models.ATTENDENCE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ATTENDENCE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DATES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIME_IN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIME_IN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIME_OUT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIME_OUT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STUDENT.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STUDENT.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

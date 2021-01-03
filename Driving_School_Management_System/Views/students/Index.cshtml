@@ -5,21 +5,23 @@
     //Layout = "~/Views/Shared/_Layout - Copy.cshtml";
 }
 
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css.map" rel="stylesheet" />
 <link href="~/Content/DataTables/media/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
 
+<div class="container">
+    <hr />
+    <h2 class="text-uppercase text-center text-purple">Student Records </h2>
+    <hr />
+    <p>
+        <a href="/students/create" class="btn btn-primary"><span class="fas fa-plus mr-1"></span>Add New</a>
+    </p>
 
-<hr />
-<h2 class="text-uppercase text-center text-purple">Student Records </h2>
-<hr />
-<p>
-    <a href="/students/create" class="btn btn-primary"><span class="fas fa-plus mr-1"></span>Add New</a>
 
-    <table class="table table-hover">
-        <thead>
+    <table class="table table-hover text-center table-responsive">
+        <thead class="  text-purple">
             <tr>
-                <th>#</th>
+
                 <th>
                     @Html.DisplayNameFor(model => model.FirstName)
                 </th>
@@ -39,56 +41,63 @@
                     @Html.DisplayNameFor(model => model.gender)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DURATION.FULL_MONTH)
+                    @Html.DisplayNameFor(model => model.DURATION.DurationTime)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.SHIFT.SHIFT_A)
+                    @Html.DisplayNameFor(model => model.SHIFT.WhichShift)
                 </th>
 
+
+                <th>#</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        <a href="/students/edit/@item.ID" class="btn btn-sm btn-secondary"><span class="fas fa-edit mr-1"></span>Edit</a>
+            <tr>
 
-                        <a href="/students/delete/@item.ID" class="btn btn-sm btn-danger"><span class="fas fa-trash mr-1"></span>Delete</a>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Addres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telephone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DURATION.DurationTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SHIFT.WhichShift)
+                </td>
+                <td>
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a href="/students/edit/@item.ID" class="btn btn-sm btn-success"><span class="fas fa-edit "></span></a>
 
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Addres)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Telephone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.gender)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DURATION.FULL_MONTH)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SHIFT.SHIFT_A)
-                    </td>
+                        <a href = "~/students/delete/@item.ID" onclick = "return confirm('Are you sure you wish to delete this Record?');" class="btn btn-danger fas fa-trash-alt "></a>
 
-                </tr>
+                    }
+
+
+                </td>
+            </tr>
             }
 
         </tbody>
-        <tfoot>
+        <tfoot class="  text-purple">
             <tr>
-                <th>#</th>
+
                 <th>
                     @Html.DisplayNameFor(model => model.FirstName)
                 </th>
@@ -108,15 +117,17 @@
                     @Html.DisplayNameFor(model => model.gender)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DURATION.FULL_MONTH)
+                    @Html.DisplayNameFor(model => model.DURATION.DurationTime)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.SHIFT.SHIFT_A)
+                    @Html.DisplayNameFor(model => model.SHIFT.WhichShift)
                 </th>
-
+                <th>#</th>
             </tr>
         </tfoot>
     </table>
+</div>
+
 
 
 
@@ -130,5 +141,5 @@
 
 <script>
     $('.table').DataTable();
- 
+
 </script>

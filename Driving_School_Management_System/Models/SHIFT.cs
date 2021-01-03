@@ -21,8 +21,7 @@ namespace Driving_School_Management_System.Models
         }
     
         public int ID { get; set; }
-        public string SHIFT_A { get; set; }
-        public string SHIFT_B { get; set; }
+        public string WhichShift { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STUDENT> STUDENTS { get; set; }

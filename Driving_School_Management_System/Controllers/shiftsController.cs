@@ -46,7 +46,7 @@ namespace Driving_School_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,SHIFT_A,SHIFT_B")] SHIFT sHIFT)
+        public ActionResult Create([Bind(Include = "ID,WhichShift")] SHIFT sHIFT)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Driving_School_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,SHIFT_A,SHIFT_B")] SHIFT sHIFT)
+        public ActionResult Edit([Bind(Include = "ID,WhichShift")] SHIFT sHIFT)
         {
             if (ModelState.IsValid)
             {

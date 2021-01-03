@@ -1,0 +1,66 @@
+﻿@model Driving_School_Management_System.Models.CONTACT
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CONTACT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEPHONE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEPHONE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SUBJECTS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUBJECTS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MESSAAGE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MESSAAGE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CURRENTTIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CURRENTTIME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

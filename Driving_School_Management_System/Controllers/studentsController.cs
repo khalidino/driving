@@ -10,7 +10,6 @@ using Driving_School_Management_System.Models;
 
 namespace Driving_School_Management_System.Controllers
 {
-     
     public class studentsController : Controller
     {
         private DRIVING_SCHOOL_MANAGEMENT_SYSTEMEntities db = new DRIVING_SCHOOL_MANAGEMENT_SYSTEMEntities();
@@ -40,8 +39,8 @@ namespace Driving_School_Management_System.Controllers
         // GET: students/Create
         public ActionResult Create()
         {
-            ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "FULL_MONTH");
-            ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "SHIFT_A");
+            ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "DurationTime");
+            ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "WhichShift");
             return View();
         }
 
@@ -59,8 +58,8 @@ namespace Driving_School_Management_System.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "FULL_MONTH", sTUDENT.Duration_ID);
-            ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "SHIFT_A", sTUDENT.SHIFT_ID);
+            ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "DurationTime", sTUDENT.Duration_ID);
+            ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "WhichShift", sTUDENT.SHIFT_ID);
             return View(sTUDENT);
         }
 
@@ -76,8 +75,8 @@ namespace Driving_School_Management_System.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "FULL_MONTH", sTUDENT.Duration_ID);
-            ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "SHIFT_A", sTUDENT.SHIFT_ID);
+            ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "DurationTime", sTUDENT.Duration_ID);
+            ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "WhichShift", sTUDENT.SHIFT_ID);
             return View(sTUDENT);
         }
 
@@ -94,8 +93,8 @@ namespace Driving_School_Management_System.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "FULL_MONTH", sTUDENT.Duration_ID);
-            ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "SHIFT_A", sTUDENT.SHIFT_ID);
+            ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "DurationTime", sTUDENT.Duration_ID);
+            ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "WhichShift", sTUDENT.SHIFT_ID);
             return View(sTUDENT);
         }
 

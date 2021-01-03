@@ -1,0 +1,64 @@
+﻿@model Driving_School_Management_System.Models.CAR_DETAIL
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CAR_DETAIL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CARNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CARMODEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARMODEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CARGEAR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARGEAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ENGINE_CC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ENGINE_CC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INSTRUCTOR.FULLNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSTRUCTOR.FULLNAME)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

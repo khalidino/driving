@@ -46,7 +46,7 @@ namespace Driving_School_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FULL_MONTH,HALF_MONTH")] DURATION dURATION)
+        public ActionResult Create([Bind(Include = "ID,DurationTime")] DURATION dURATION)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Driving_School_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FULL_MONTH,HALF_MONTH")] DURATION dURATION)
+        public ActionResult Edit([Bind(Include = "ID,DurationTime")] DURATION dURATION)
         {
             if (ModelState.IsValid)
             {

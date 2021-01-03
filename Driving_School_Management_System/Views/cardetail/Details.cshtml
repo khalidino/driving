@@ -1,0 +1,58 @@
+﻿@model Driving_School_Management_System.Models.CAR_DETAIL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CAR_DETAIL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CARNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CARMODEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARMODEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CARGEAR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARGEAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ENGINE_CC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ENGINE_CC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INSTRUCTOR.FULLNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSTRUCTOR.FULLNAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

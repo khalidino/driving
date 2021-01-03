@@ -25,9 +25,20 @@ namespace Driving_School_Management_System.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<ATTENDENCE> ATTENDENCEs { get; set; }
         public virtual DbSet<DURATION> DURATIONs { get; set; }
         public virtual DbSet<SHIFT> SHIFTS { get; set; }
         public virtual DbSet<STUDENT> STUDENTS { get; set; }
+        public virtual DbSet<CAR_DETAIL> CAR_DETAIL { get; set; }
+        public virtual DbSet<CONTACT> CONTACTs { get; set; }
+        public virtual DbSet<employee> employees { get; set; }
+        public virtual DbSet<INSTRUCTOR> INSTRUCTORs { get; set; }
+        public virtual DbSet<NEWS> NEWS { get; set; }
+        public virtual DbSet<ORDER> ORDERS { get; set; }
     }
 }
