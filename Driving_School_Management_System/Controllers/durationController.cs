@@ -20,20 +20,7 @@ namespace Driving_School_Management_System.Controllers
             return View(db.DURATIONs.ToList());
         }
 
-        // GET: duration/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DURATION dURATION = db.DURATIONs.Find(id);
-            if (dURATION == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dURATION);
-        }
+     
 
         // GET: duration/Create
         public ActionResult Create()
@@ -89,25 +76,9 @@ namespace Driving_School_Management_System.Controllers
             return View(dURATION);
         }
 
-        // GET: duration/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DURATION dURATION = db.DURATIONs.Find(id);
-            if (dURATION == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dURATION);
-        }
-
-        // POST: duration/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+     
+     
+        public ActionResult Remove(int id)
         {
             DURATION dURATION = db.DURATIONs.Find(id);
             db.DURATIONs.Remove(dURATION);

@@ -14,6 +14,12 @@ namespace Driving_School_Management_System.Models
     
     public partial class CAR_DETAIL
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CAR_DETAIL()
+        {
+            this.STUDENTS = new HashSet<STUDENT>();
+        }
+    
         public int ID { get; set; }
         public string CARNAME { get; set; }
         public string CARMODEL { get; set; }
@@ -22,5 +28,7 @@ namespace Driving_School_Management_System.Models
         public Nullable<int> INSTRUCTOR_ID { get; set; }
     
         public virtual INSTRUCTOR INSTRUCTOR { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<STUDENT> STUDENTS { get; set; }
     }
 }

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Driving_School_Management_System.Models.STUDENT>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-3 ">
+        <div class="mt-5">
+
+        </div>
+    </div>
+    <div class="col-lg-6 text-center">
+        <div class="mt-lg-5">
+            <h1 class="font-weight-bolder"><b class="text-warning">CAALAMI</b> <b class="text-warning">NAJAX</b> </h1>
+            <h5 class="text-capitalize text-center text-purple">Find Student ID Number to Preview a Report</h5>
+            <hr  style="border:2px solid;border-color:orangered;width:100px">
+            <form method="post">
+                <div class="form-group">
+                    <input id="studentIdReport" type="number" class="form-control" name="studentIdReport" placeholder="Enter Student ID" style="display:inline-block;width:280px" />
+                    <input id="submitSearch" type="submit" value="Search" class="btn btn-primary" />
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="mt-5">
+
+        </div>
+    </div>
+</div>
+
+
+
+

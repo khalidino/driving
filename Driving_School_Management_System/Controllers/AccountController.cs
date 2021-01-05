@@ -135,7 +135,7 @@ namespace Driving_School_Management_System.Controllers
         }
 
         // GET: /Account/Register
-        [Authorize]
+        
         public ActionResult Register()
         {
             ViewBag.Name = new SelectList(_db.Roles.ToList(), "Name", "Name");

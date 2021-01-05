@@ -1,0 +1,117 @@
+﻿@model Driving_School_Management_System.Models.STUDENT
+
+@{
+    ViewBag.Title = "Students Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+
+        <div class="col-md-6">
+            <h2 class="text-center text-warning">Caalami Najax</h2>
+            <h4 class="text-center">Student Report</h4>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <tr>
+                    <th class="h5">Student ID</th>
+                    <td> CN-@Html.DisplayFor(model => model.ID)</td>
+                </tr>
+                <tr>
+                    <th class="h5">Student Addres</th>
+                    <td> @Html.DisplayFor(model => model.Addres)</td>
+                </tr>
+                <tr>
+                    <th class="h5">Student Email</th>
+                    <td> @Html.DisplayFor(model => model.Email)</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr>
+                    <th class="h5">School Email</th>
+                    <td>caalaminajax@gmail.com</td>
+                </tr>
+                <tr>
+                    <th class="h5">School Telephone</th>
+                    <td>+252634377778 / +252659350666</td>
+                </tr>
+                <tr>
+                    <th class="h5">School Addres</th>
+                    <td>Xero - Awr</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <hr />
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+
+                    <th>FullName</th>
+                    <th>Duration Time</th>
+                    <th>Shift</th>
+                    <th>Car Detail</th>
+                    <th>Instructor Name</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <h3>Student information</h3>
+                <tr>
+
+                    <td> @Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</td>
+
+                    <td> @Html.DisplayFor(model => model.DURATION.DurationTime)</td>
+                    <td> @Html.DisplayFor(model => model.SHIFT.WhichShift)</td>
+                    <td> @Html.DisplayFor(model => model.CAR_DETAIL.CARNAME)</td>
+                    <td> @Html.DisplayFor(model => model.CAR_DETAIL.INSTRUCTOR.FULLNAME)</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>FullName</th>
+                <th>Date</th>
+                <th>Time In</th>
+                <th>Time Out</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <h3>Attendance information</h3>
+            <tr>
+
+                <td> @Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</td>
+
+ 
+                <td> @ViewBag.ATTENDENCE</td>
+                 
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+ 

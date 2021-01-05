@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "User Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <hr />
+    <h2 class="text-center text-cyan">Select User Management Sections</h2>
+    <hr />
+    <a href="/dashboard" class="btn btn-primary">Back to Dashboard</a>
+
+    <hr />
+    <div class="row">
+
+        <div class="col-md-6">
+            <!-- small box -->
+            <div class="small-box bg-light">
+                <div class="inner  text-center">
+                    <span class="fa fa-registered text-center h1"></span>
+                    <h3 class="text-center"> Register New User</h3>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="/account/register" class="small-box-footer bg-primary"><span class="text-white">Click Here</span> <i class="fas text-white fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-md-6">
+            <!-- small box -->
+            <div class="small-box bg-light">
+                <div class="inner text-center">
+
+                    <span class="fa fa-user-alt text-center h1"></span>
+
+                    <h3 class="text-center">Users Record</h3>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="/users" class="small-box-footer bg-success"><span class="text-white">Click Here</span><i class="fas text-white fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <!-- small box -->
+            <div class="small-box bg-light">
+                <div class="inner text-center">
+
+                    <span class="fa fa-tasks text-center h1"></span>
+
+                    <h3 class="text-center">Role Detail</h3>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="/role/RoleList" class="small-box-footer bg-warning">Click Here<i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!-- small box -->
+            <div class="small-box bg-light">
+                <div class="inner text-center">
+
+                    <span class="fa fa-key text-center h1"></span>
+                    <h3 class="text-center">Change User Password</h3>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="/Manage/ChangePassword" class="small-box-footer bg-purple  "><span class="text-white">Click Here</span><i class="fas fa-arrow-circle-right text-white"></i></a>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

@@ -1,33 +1,88 @@
 ﻿@model IEnumerable<Driving_School_Management_System.Models.DURATION>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Duration Record";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DurationTime)
-        </th>
-        <th></th>
-    </tr>
+<link href="~/Content/bootstrap.min.css.map" rel="stylesheet" />
+<link href="~/Content/DataTables/media/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DurationTime)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
 
-</table>
+<div class="container">
+    <hr />
+    <h2 class="text-uppercase text-center text-purple">Duration Records </h2>
+    <hr />
+    <p>
+        <a href="/duration/create" class="btn btn-primary"><span class="fas fa-plus mr-1"></span>Add New</a>
+    </p>
+
+
+    <table class="table table-hover">
+        <thead class="  text-purple">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DurationTime)
+                </th>
+                <th>
+                   #
+                </th>
+                 
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DurationTime)
+                    </td>
+                     
+                    <td>
+
+                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <a href="/duration/edit/@item.ID" class="btn btn-sm btn-success"><span class="fas fa-edit "></span></a>
+
+                            <a href="~/duration/Remove/@item.ID" onclick="return confirm('Are you sure you wish to delete this Record?');" class="btn btn-danger fas fa-trash-alt "></a>
+
+                        }
+
+
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+        <tfoot class="  text-purple">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DurationTime)
+                </th>
+                <th>
+                   #
+                </th>
+                
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/popper.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/DataTables/media/js/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/media/js/dataTables.bootstrap4.min.js"></script>
+
+
+<script>
+    $('.table').DataTable();
+
+</script>

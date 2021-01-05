@@ -31,14 +31,15 @@ namespace Driving_School_Management_System.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<ATTENDENCE> ATTENDENCEs { get; set; }
-        public virtual DbSet<DURATION> DURATIONs { get; set; }
-        public virtual DbSet<SHIFT> SHIFTS { get; set; }
-        public virtual DbSet<STUDENT> STUDENTS { get; set; }
         public virtual DbSet<CAR_DETAIL> CAR_DETAIL { get; set; }
         public virtual DbSet<CONTACT> CONTACTs { get; set; }
+        public virtual DbSet<DURATION> DURATIONs { get; set; }
         public virtual DbSet<employee> employees { get; set; }
         public virtual DbSet<INSTRUCTOR> INSTRUCTORs { get; set; }
         public virtual DbSet<NEWS> NEWS { get; set; }
         public virtual DbSet<ORDER> ORDERS { get; set; }
+        public virtual DbSet<SHIFT> SHIFTS { get; set; }
+        public virtual DbSet<STUDENT> STUDENTS { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

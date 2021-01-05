@@ -183,9 +183,12 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\newsController.cs" />
     <Compile Include="Controllers\orderController.cs" />
+    <Compile Include="Controllers\reportsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\shiftsController.cs" />
     <Compile Include="Controllers\studentsController.cs" />
+    <Compile Include="Controllers\userdashboardController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -250,6 +253,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\STUDENT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -538,7 +544,6 @@
     <Content Include="Content\svg-with-js.min.css" />
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
-    <Content Include="Driving_school_management_script.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -786,13 +791,6 @@
     <Content Include="Content\DataTables\extensions\Buttons\css\common.scss" />
     <Content Include="Content\DataTables\extensions\Buttons\css\mixins.scss" />
     <Content Include="Content\DataTables\media\images\Sorting icons.psd" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
     <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.css.map" />
@@ -824,6 +822,13 @@
     <Content Include="assets\vendor\line-awesome\fonts\la-solid-900.woff2" />
     <Content Include="assets\vendor\owl.carousel\LICENSE" />
     <Content Include="assets\vendor\owl.carousel\README.md" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -973,13 +978,9 @@
     <Content Include="Views\attendence\Edit.cshtml" />
     <Content Include="Views\attendence\Index.cshtml" />
     <Content Include="Views\duration\Create.cshtml" />
-    <Content Include="Views\duration\Delete.cshtml" />
-    <Content Include="Views\duration\Details.cshtml" />
     <Content Include="Views\duration\Edit.cshtml" />
     <Content Include="Views\duration\Index.cshtml" />
     <Content Include="Views\shifts\Create.cshtml" />
-    <Content Include="Views\shifts\Delete.cshtml" />
-    <Content Include="Views\shifts\Details.cshtml" />
     <Content Include="Views\shifts\Edit.cshtml" />
     <Content Include="Views\shifts\Index.cshtml" />
     <Content Include="Views\students\Create.cshtml" />
@@ -1019,6 +1020,13 @@
     <Content Include="Views\cardetail\Index.cshtml" />
     <Content Include="Views\Role\RoleList.cshtml" />
     <Content Include="Views\Role\CreateRole.cshtml" />
+    <Content Include="Views\reports\index.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\userdashboard\Index.cshtml" />
+    <Content Include="Views\reports\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,20 +20,7 @@ namespace Driving_School_Management_System.Controllers
             return View(db.SHIFTS.ToList());
         }
 
-        // GET: shifts/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SHIFT sHIFT = db.SHIFTS.Find(id);
-            if (sHIFT == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sHIFT);
-        }
+     
 
         // GET: shifts/Create
         public ActionResult Create()
@@ -89,25 +76,8 @@ namespace Driving_School_Management_System.Controllers
             return View(sHIFT);
         }
 
-        // GET: shifts/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SHIFT sHIFT = db.SHIFTS.Find(id);
-            if (sHIFT == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sHIFT);
-        }
-
-        // POST: shifts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        
+        public ActionResult Remove(int id)
         {
             SHIFT sHIFT = db.SHIFTS.Find(id);
             db.SHIFTS.Remove(sHIFT);

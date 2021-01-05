@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -172,8 +172,19 @@
           <Property Name="gender" Type="varchar" MaxLength="7" Nullable="false" />
           <Property Name="Duration_ID" Type="int" />
           <Property Name="SHIFT_ID" Type="int" />
+          <Property Name="CAR_ID" Type="int" />
         </EntityType>
-        <Association Name="FK__ATTENDENCE__STID__1B0907CE">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__ATTENDENCE__STID__6D0D32F4">
           <End Role="STUDENTS" Type="Self.STUDENTS" Multiplicity="0..1" />
           <End Role="ATTENDENCE" Type="Self.ATTENDENCE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -185,7 +196,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CAR_DETAI__INSTR__3D5E1FD2">
+        <Association Name="FK__CAR_DETAI__INSTR__6E01572D">
           <End Role="INSTRUCTOR" Type="Self.INSTRUCTOR" Multiplicity="0..1" />
           <End Role="CAR_DETAIL" Type="Self.CAR_DETAIL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -197,7 +208,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STUDENTS__Durati__173876EA">
+        <Association Name="FK__STUDENTS__CAR_ID__70DDC3D8">
+          <End Role="CAR_DETAIL" Type="Self.CAR_DETAIL" Multiplicity="0..1" />
+          <End Role="STUDENTS" Type="Self.STUDENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAR_DETAIL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STUDENTS">
+              <PropertyRef Name="CAR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENTS__Durati__6EF57B66">
           <End Role="DURATION" Type="Self.DURATION" Multiplicity="0..1" />
           <End Role="STUDENTS" Type="Self.STUDENTS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -209,7 +232,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STUDENTS__SHIFT___182C9B23">
+        <Association Name="FK__STUDENTS__SHIFT___6FE99F9F">
           <End Role="SHIFTS" Type="Self.SHIFTS" Multiplicity="0..1" />
           <End Role="STUDENTS" Type="Self.STUDENTS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -294,19 +317,24 @@
           <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SHIFTS" EntityType="Self.SHIFTS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STUDENTS" EntityType="Self.STUDENTS" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ATTENDENCE__STID__1B0907CE" Association="Self.FK__ATTENDENCE__STID__1B0907CE">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ATTENDENCE__STID__6D0D32F4" Association="Self.FK__ATTENDENCE__STID__6D0D32F4">
             <End Role="STUDENTS" EntitySet="STUDENTS" />
             <End Role="ATTENDENCE" EntitySet="ATTENDENCE" />
           </AssociationSet>
-          <AssociationSet Name="FK__CAR_DETAI__INSTR__3D5E1FD2" Association="Self.FK__CAR_DETAI__INSTR__3D5E1FD2">
+          <AssociationSet Name="FK__CAR_DETAI__INSTR__6E01572D" Association="Self.FK__CAR_DETAI__INSTR__6E01572D">
             <End Role="INSTRUCTOR" EntitySet="INSTRUCTOR" />
             <End Role="CAR_DETAIL" EntitySet="CAR_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__STUDENTS__Durati__173876EA" Association="Self.FK__STUDENTS__Durati__173876EA">
+          <AssociationSet Name="FK__STUDENTS__CAR_ID__70DDC3D8" Association="Self.FK__STUDENTS__CAR_ID__70DDC3D8">
+            <End Role="CAR_DETAIL" EntitySet="CAR_DETAIL" />
+            <End Role="STUDENTS" EntitySet="STUDENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENTS__Durati__6EF57B66" Association="Self.FK__STUDENTS__Durati__6EF57B66">
             <End Role="DURATION" EntitySet="DURATION" />
             <End Role="STUDENTS" EntitySet="STUDENTS" />
           </AssociationSet>
-          <AssociationSet Name="FK__STUDENTS__SHIFT___182C9B23" Association="Self.FK__STUDENTS__SHIFT___182C9B23">
+          <AssociationSet Name="FK__STUDENTS__SHIFT___6FE99F9F" Association="Self.FK__STUDENTS__SHIFT___6FE99F9F">
             <End Role="SHIFTS" EntitySet="SHIFTS" />
             <End Role="STUDENTS" EntitySet="STUDENTS" />
           </AssociationSet>
@@ -327,7 +355,8 @@
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -399,7 +428,32 @@
           <Property Name="DATES" Type="DateTime" Precision="0" />
           <Property Name="TIME_IN" Type="Time" Precision="7" />
           <Property Name="TIME_OUT" Type="Time" Precision="7" />
-          <NavigationProperty Name="STUDENT" Relationship="Self.FK__ATTENDENCE__STID__1B0907CE" FromRole="ATTENDENCE" ToRole="STUDENTS" />
+          <NavigationProperty Name="STUDENT" Relationship="Self.FK__ATTENDENCE__STID__6D0D32F4" FromRole="ATTENDENCE" ToRole="STUDENTS" />
+        </EntityType>
+        <EntityType Name="CAR_DETAIL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CARNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CARMODEL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CARGEAR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ENGINE_CC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="INSTRUCTOR_ID" Type="Int32" />
+          <NavigationProperty Name="INSTRUCTOR" Relationship="Self.FK__CAR_DETAI__INSTR__6E01572D" FromRole="CAR_DETAIL" ToRole="INSTRUCTOR" />
+          <NavigationProperty Name="STUDENTS" Relationship="Self.FK__STUDENTS__CAR_ID__70DDC3D8" FromRole="CAR_DETAIL" ToRole="STUDENTS" />
+        </EntityType>
+        <EntityType Name="CONTACT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEPHONE" Type="Int32" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SUBJECTS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MESSAAGE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CURRENTTIME" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="DURATION">
           <Key>
@@ -407,7 +461,54 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DurationTime" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="STUDENTS" Relationship="Self.FK__STUDENTS__Durati__173876EA" FromRole="DURATION" ToRole="STUDENTS" />
+          <NavigationProperty Name="STUDENTS" Relationship="Self.FK__STUDENTS__Durati__6EF57B66" FromRole="DURATION" ToRole="STUDENTS" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FULLNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone" Type="Int32" />
+          <Property Name="ADDRES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SALARY" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="INSTRUCTOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FULLNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEPHONE" Type="Int32" />
+          <Property Name="LISENCES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GENDER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EDUCATIONAL_LEVEL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CAR_DETAIL" Relationship="Self.FK__CAR_DETAI__INSTR__6E01572D" FromRole="INSTRUCTOR" ToRole="CAR_DETAIL" />
+        </EntityType>
+        <EntityType Name="NEWS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BODY" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PostTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ORDER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FULLNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEPHONE" Type="Int32" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SERVICE_DRIVER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MESSAAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="SHIFT">
           <Key>
@@ -415,7 +516,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="WhichShift" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="STUDENTS" Relationship="Self.FK__STUDENTS__SHIFT___182C9B23" FromRole="SHIFTS" ToRole="STUDENTS" />
+          <NavigationProperty Name="STUDENTS" Relationship="Self.FK__STUDENTS__SHIFT___6FE99F9F" FromRole="SHIFTS" ToRole="STUDENTS" />
         </EntityType>
         <EntityType Name="STUDENT">
           <Key>
@@ -430,9 +531,21 @@
           <Property Name="gender" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Duration_ID" Type="Int32" />
           <Property Name="SHIFT_ID" Type="Int32" />
-          <NavigationProperty Name="ATTENDENCEs" Relationship="Self.FK__ATTENDENCE__STID__1B0907CE" FromRole="STUDENTS" ToRole="ATTENDENCE" />
-          <NavigationProperty Name="DURATION" Relationship="Self.FK__STUDENTS__Durati__173876EA" FromRole="STUDENTS" ToRole="DURATION" />
-          <NavigationProperty Name="SHIFT" Relationship="Self.FK__STUDENTS__SHIFT___182C9B23" FromRole="STUDENTS" ToRole="SHIFTS" />
+          <Property Name="CAR_ID" Type="Int32" />
+          <NavigationProperty Name="ATTENDENCEs" Relationship="Self.FK__ATTENDENCE__STID__6D0D32F4" FromRole="STUDENTS" ToRole="ATTENDENCE" />
+          <NavigationProperty Name="CAR_DETAIL" Relationship="Self.FK__STUDENTS__CAR_ID__70DDC3D8" FromRole="STUDENTS" ToRole="CAR_DETAIL" />
+          <NavigationProperty Name="DURATION" Relationship="Self.FK__STUDENTS__Durati__6EF57B66" FromRole="STUDENTS" ToRole="DURATION" />
+          <NavigationProperty Name="SHIFT" Relationship="Self.FK__STUDENTS__SHIFT___6FE99F9F" FromRole="STUDENTS" ToRole="SHIFTS" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -462,7 +575,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ATTENDENCE__STID__1B0907CE">
+        <Association Name="FK__ATTENDENCE__STID__6D0D32F4">
           <End Role="STUDENTS" Type="Self.STUDENT" Multiplicity="0..1" />
           <End Role="ATTENDENCE" Type="Self.ATTENDENCE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -474,7 +587,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STUDENTS__Durati__173876EA">
+        <Association Name="FK__CAR_DETAI__INSTR__6E01572D">
+          <End Role="INSTRUCTOR" Type="Self.INSTRUCTOR" Multiplicity="0..1" />
+          <End Role="CAR_DETAIL" Type="Self.CAR_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUCTOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CAR_DETAIL">
+              <PropertyRef Name="INSTRUCTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENTS__CAR_ID__70DDC3D8">
+          <End Role="CAR_DETAIL" Type="Self.CAR_DETAIL" Multiplicity="0..1" />
+          <End Role="STUDENTS" Type="Self.STUDENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAR_DETAIL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STUDENTS">
+              <PropertyRef Name="CAR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENTS__Durati__6EF57B66">
           <End Role="DURATION" Type="Self.DURATION" Multiplicity="0..1" />
           <End Role="STUDENTS" Type="Self.STUDENT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -486,7 +623,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STUDENTS__SHIFT___182C9B23">
+        <Association Name="FK__STUDENTS__SHIFT___6FE99F9F">
           <End Role="SHIFTS" Type="Self.SHIFT" Multiplicity="0..1" />
           <End Role="STUDENTS" Type="Self.STUDENT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -509,9 +646,16 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="ATTENDENCEs" EntityType="Self.ATTENDENCE" />
+          <EntitySet Name="CAR_DETAIL" EntityType="Self.CAR_DETAIL" />
+          <EntitySet Name="CONTACTs" EntityType="Self.CONTACT" />
           <EntitySet Name="DURATIONs" EntityType="Self.DURATION" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="INSTRUCTORs" EntityType="Self.INSTRUCTOR" />
+          <EntitySet Name="NEWS" EntityType="Self.NEWS" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDER" />
           <EntitySet Name="SHIFTS" EntityType="Self.SHIFT" />
           <EntitySet Name="STUDENTS" EntityType="Self.STUDENT" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -520,15 +664,23 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK__ATTENDENCE__STID__1B0907CE" Association="Self.FK__ATTENDENCE__STID__1B0907CE">
+          <AssociationSet Name="FK__ATTENDENCE__STID__6D0D32F4" Association="Self.FK__ATTENDENCE__STID__6D0D32F4">
             <End Role="STUDENTS" EntitySet="STUDENTS" />
             <End Role="ATTENDENCE" EntitySet="ATTENDENCEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__STUDENTS__Durati__173876EA" Association="Self.FK__STUDENTS__Durati__173876EA">
+          <AssociationSet Name="FK__CAR_DETAI__INSTR__6E01572D" Association="Self.FK__CAR_DETAI__INSTR__6E01572D">
+            <End Role="INSTRUCTOR" EntitySet="INSTRUCTORs" />
+            <End Role="CAR_DETAIL" EntitySet="CAR_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENTS__CAR_ID__70DDC3D8" Association="Self.FK__STUDENTS__CAR_ID__70DDC3D8">
+            <End Role="CAR_DETAIL" EntitySet="CAR_DETAIL" />
+            <End Role="STUDENTS" EntitySet="STUDENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENTS__Durati__6EF57B66" Association="Self.FK__STUDENTS__Durati__6EF57B66">
             <End Role="DURATION" EntitySet="DURATIONs" />
             <End Role="STUDENTS" EntitySet="STUDENTS" />
           </AssociationSet>
-          <AssociationSet Name="FK__STUDENTS__SHIFT___182C9B23" Association="Self.FK__STUDENTS__SHIFT___182C9B23">
+          <AssociationSet Name="FK__STUDENTS__SHIFT___6FE99F9F" Association="Self.FK__STUDENTS__SHIFT___6FE99F9F">
             <End Role="SHIFTS" EntitySet="SHIFTS" />
             <End Role="STUDENTS" EntitySet="STUDENTS" />
           </AssociationSet>
@@ -536,100 +688,7 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="CAR_DETAIL" EntityType="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.CAR_DETAIL" />
-          <EntitySet Name="CONTACTs" EntityType="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.CONTACT" />
-          <EntitySet Name="employees" EntityType="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.employee" />
-          <EntitySet Name="INSTRUCTORs" EntityType="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.INSTRUCTOR" />
-          <EntitySet Name="NEWS" EntityType="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.NEWS" />
-          <EntitySet Name="ORDERS" EntityType="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.ORDER" />
-          <AssociationSet Name="FK__CAR_DETAI__INSTR__3D5E1FD2" Association="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.FK__CAR_DETAI__INSTR__3D5E1FD2">
-            <End Role="INSTRUCTOR" EntitySet="INSTRUCTORs" />
-            <End Role="CAR_DETAIL" EntitySet="CAR_DETAIL" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="CAR_DETAIL">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CARNAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CARMODEL" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CARGEAR" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ENGINE_CC" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="INSTRUCTOR_ID" Type="Int32" />
-          <NavigationProperty Name="INSTRUCTOR" Relationship="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.FK__CAR_DETAI__INSTR__3D5E1FD2" FromRole="CAR_DETAIL" ToRole="INSTRUCTOR" />
-        </EntityType>
-        <EntityType Name="CONTACT">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="TELEPHONE" Type="Int32" />
-          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="SUBJECTS" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MESSAAGE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CURRENTTIME" Type="Time" Precision="7" />
-        </EntityType>
-        <EntityType Name="employee">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FULLNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Telephone" Type="Int32" />
-          <Property Name="ADDRES" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="SALARY" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
-          <Property Name="DOB" Type="DateTime" Precision="0" />
-        </EntityType>
-        <EntityType Name="INSTRUCTOR">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FULLNAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ADDRES" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="TELEPHONE" Type="Int32" />
-          <Property Name="LISENCES" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="GENDER" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="EDUCATIONAL_LEVEL" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CAR_DETAIL" Relationship="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.FK__CAR_DETAI__INSTR__3D5E1FD2" FromRole="INSTRUCTOR" ToRole="CAR_DETAIL" />
-        </EntityType>
-        <EntityType Name="NEWS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TITLE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="BODY" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="PostTime" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="ORDER">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FULLNAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="TELEPHONE" Type="Int32" />
-          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="SERVICE_DRIVER" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MESSAAGE" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <Association Name="FK__CAR_DETAI__INSTR__3D5E1FD2">
-          <End Type="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.INSTRUCTOR" Role="INSTRUCTOR" Multiplicity="0..1" />
-          <End Type="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.CAR_DETAIL" Role="CAR_DETAIL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INSTRUCTOR">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CAR_DETAIL">
-              <PropertyRef Name="INSTRUCTOR_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -702,11 +761,86 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CAR_DETAIL">
+            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.CAR_DETAIL">
+              <MappingFragment StoreEntitySet="CAR_DETAIL">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CARNAME" ColumnName="CARNAME" />
+                <ScalarProperty Name="CARMODEL" ColumnName="CARMODEL" />
+                <ScalarProperty Name="CARGEAR" ColumnName="CARGEAR" />
+                <ScalarProperty Name="ENGINE_CC" ColumnName="ENGINE_CC" />
+                <ScalarProperty Name="INSTRUCTOR_ID" ColumnName="INSTRUCTOR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTACTs">
+            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.CONTACT">
+              <MappingFragment StoreEntitySet="CONTACT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SUBJECTS" ColumnName="SUBJECTS" />
+                <ScalarProperty Name="MESSAAGE" ColumnName="MESSAAGE" />
+                <ScalarProperty Name="CURRENTTIME" ColumnName="CURRENTTIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="DURATIONs">
             <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.DURATION">
               <MappingFragment StoreEntitySet="DURATION">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DurationTime" ColumnName="DurationTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="ADDRES" ColumnName="ADDRES" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSTRUCTORs">
+            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.INSTRUCTOR">
+              <MappingFragment StoreEntitySet="INSTRUCTOR">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ADDRES" ColumnName="ADDRES" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="LISENCES" ColumnName="LISENCES" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="EDUCATIONAL_LEVEL" ColumnName="EDUCATIONAL_LEVEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NEWS">
+            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.NEWS">
+              <MappingFragment StoreEntitySet="NEWS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="BODY" ColumnName="BODY" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERS">
+            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.ORDER">
+              <MappingFragment StoreEntitySet="ORDERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SERVICE_DRIVER" ColumnName="SERVICE_DRIVER" />
+                <ScalarProperty Name="MESSAAGE" ColumnName="MESSAAGE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -730,6 +864,18 @@
                 <ScalarProperty Name="gender" ColumnName="gender" />
                 <ScalarProperty Name="Duration_ID" ColumnName="Duration_ID" />
                 <ScalarProperty Name="SHIFT_ID" ColumnName="SHIFT_ID" />
+                <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -741,81 +887,6 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="CAR_DETAIL">
-            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.CAR_DETAIL">
-              <MappingFragment StoreEntitySet="CAR_DETAIL">
-                <ScalarProperty Name="INSTRUCTOR_ID" ColumnName="INSTRUCTOR_ID" />
-                <ScalarProperty Name="ENGINE_CC" ColumnName="ENGINE_CC" />
-                <ScalarProperty Name="CARGEAR" ColumnName="CARGEAR" />
-                <ScalarProperty Name="CARMODEL" ColumnName="CARMODEL" />
-                <ScalarProperty Name="CARNAME" ColumnName="CARNAME" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CONTACTs">
-            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.CONTACT">
-              <MappingFragment StoreEntitySet="CONTACT">
-                <ScalarProperty Name="CURRENTTIME" ColumnName="CURRENTTIME" />
-                <ScalarProperty Name="MESSAAGE" ColumnName="MESSAAGE" />
-                <ScalarProperty Name="SUBJECTS" ColumnName="SUBJECTS" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="employees">
-            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.employee">
-              <MappingFragment StoreEntitySet="employee">
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="SALARY" ColumnName="SALARY" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="ADDRES" ColumnName="ADDRES" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="INSTRUCTORs">
-            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.INSTRUCTOR">
-              <MappingFragment StoreEntitySet="INSTRUCTOR">
-                <ScalarProperty Name="EDUCATIONAL_LEVEL" ColumnName="EDUCATIONAL_LEVEL" />
-                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
-                <ScalarProperty Name="LISENCES" ColumnName="LISENCES" />
-                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
-                <ScalarProperty Name="ADDRES" ColumnName="ADDRES" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NEWS">
-            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.NEWS">
-              <MappingFragment StoreEntitySet="NEWS">
-                <ScalarProperty Name="PostTime" ColumnName="PostTime" />
-                <ScalarProperty Name="picture" ColumnName="picture" />
-                <ScalarProperty Name="BODY" ColumnName="BODY" />
-                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ORDERS">
-            <EntityTypeMapping TypeName="DRIVING_SCHOOL_MANAGEMENT_SYSTEMModel.ORDER">
-              <MappingFragment StoreEntitySet="ORDERS">
-                <ScalarProperty Name="MESSAAGE" ColumnName="MESSAAGE" />
-                <ScalarProperty Name="SERVICE_DRIVER" ColumnName="SERVICE_DRIVER" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
-                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

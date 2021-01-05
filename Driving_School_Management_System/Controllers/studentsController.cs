@@ -41,6 +41,8 @@ namespace Driving_School_Management_System.Controllers
         {
             ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "DurationTime");
             ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "WhichShift");
+            ViewBag.CAR_ID = new SelectList(db.CAR_DETAIL, "ID", "CARNAME");
+
             return View();
         }
 
@@ -49,7 +51,7 @@ namespace Driving_School_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Addres,Telephone,Email,gender,Duration_ID,SHIFT_ID")] STUDENT sTUDENT)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Addres,Telephone,Email,gender,Duration_ID,SHIFT_ID,CAR_ID")] STUDENT sTUDENT)
         {
             if (ModelState.IsValid)
             {
@@ -60,6 +62,7 @@ namespace Driving_School_Management_System.Controllers
 
             ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "DurationTime", sTUDENT.Duration_ID);
             ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "WhichShift", sTUDENT.SHIFT_ID);
+            ViewBag.CAR_ID = new SelectList(db.CAR_DETAIL, "ID", "CARNAME", sTUDENT.CAR_ID);
             return View(sTUDENT);
         }
 
@@ -77,6 +80,7 @@ namespace Driving_School_Management_System.Controllers
             }
             ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "DurationTime", sTUDENT.Duration_ID);
             ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "WhichShift", sTUDENT.SHIFT_ID);
+            ViewBag.CAR_ID = new SelectList(db.CAR_DETAIL, "ID", "CARNAME", sTUDENT.CAR_ID);
             return View(sTUDENT);
         }
 
@@ -85,7 +89,7 @@ namespace Driving_School_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Addres,Telephone,Email,gender,Duration_ID,SHIFT_ID")] STUDENT sTUDENT)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Addres,Telephone,Email,gender,Duration_ID,SHIFT_ID,CAR_ID")] STUDENT sTUDENT)
         {
             if (ModelState.IsValid)
             {
@@ -95,6 +99,7 @@ namespace Driving_School_Management_System.Controllers
             }
             ViewBag.Duration_ID = new SelectList(db.DURATIONs, "ID", "DurationTime", sTUDENT.Duration_ID);
             ViewBag.SHIFT_ID = new SelectList(db.SHIFTS, "ID", "WhichShift", sTUDENT.SHIFT_ID);
+            ViewBag.CAR_ID = new SelectList(db.CAR_DETAIL, "ID", "CARNAME", sTUDENT.CAR_ID);
             return View(sTUDENT);
         }
 

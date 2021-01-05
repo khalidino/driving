@@ -29,9 +29,11 @@ namespace Driving_School_Management_System.Models
         public string gender { get; set; }
         public Nullable<int> Duration_ID { get; set; }
         public Nullable<int> SHIFT_ID { get; set; }
+        public Nullable<int> CAR_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ATTENDENCE> ATTENDENCEs { get; set; }
+        public virtual CAR_DETAIL CAR_DETAIL { get; set; }
         public virtual DURATION DURATION { get; set; }
         public virtual SHIFT SHIFT { get; set; }
     }

@@ -35,7 +35,7 @@
                     @Html.DisplayNameFor(model => model.Telephone)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Email)
+                   @Html.DisplayNameFor(modal => modal.Email)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.gender)
@@ -81,6 +81,7 @@
                     @Html.DisplayFor(modelItem => item.SHIFT.WhichShift)
                 </td>
                 <td>
+
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <a href="/students/edit/@item.ID" class="btn btn-sm btn-success"><span class="fas fa-edit "></span></a>

@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Driving_School_Management_System.Controllers
+{
+    public class userdashboardController : Controller
+    {
+        // GET: userdashboard
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}
